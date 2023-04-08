@@ -1,9 +1,22 @@
 fn main() {
-    let mut list: Vec<f32> = vec![1.0, 2.0, 3.0];
-    let median = median(&mut list);
-    println!("median of vec {:?} is {:?}", list, median);
+    let mut list: Vec<f32> = vec![1.0, 2.0, 3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0];
+    hello_rust_learners::unique(&mut list);
+    print!("the list after removing duplicates is: {:?}", list);
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_unique() {
+        let mut list: Vec<f32> = vec![1.0, 2.0, 3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0];
+        hello_rust_learners::unique(&mut list);
+        assert_eq!(list, vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0]);
+    }
+}
+
+/*
 fn median(list: &mut [f32]) -> Option<f32> {
     if list.is_empty() {
         return None;
@@ -45,3 +58,4 @@ mod tests {
         assert_eq!(median(&mut list), None);
     }
 }
+*/
